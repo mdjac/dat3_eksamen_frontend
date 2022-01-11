@@ -46,11 +46,6 @@ const Facade = () => {
 		localStorage.removeItem("user");
 	};
 
-	const fetchData = () => {
-		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL + "/api/jokes", options).then(handleHttpErrors);
-	};
-
 	const makeOptions = (method, addToken, body) => {
 		var opts = {
 			method: method,
@@ -76,7 +71,6 @@ const Facade = () => {
 		loggedIn,
 		login,
 		logout,
-		fetchData,
 	};
 };
 
