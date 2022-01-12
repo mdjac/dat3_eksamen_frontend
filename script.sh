@@ -1,0 +1,1 @@
+scp -r ./build root@cph-mj838.eu:/var/www/eksamen

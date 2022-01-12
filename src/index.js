@@ -8,12 +8,12 @@ import reportWebVitals from "./reportWebVitals";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-	<React.StrictMode>
-		<Router>
-			<App />
-		</Router>
-	</React.StrictMode>,
-	rootElement
+  <React.StrictMode>
+    <Router basename="/eksamen">
+      <App />
+    </Router>
+  </React.StrictMode>,
+  rootElement
 );
 
 // If you want to start measuring performance in your app, pass a function
