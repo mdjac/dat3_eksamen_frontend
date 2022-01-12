@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
+import demoFacade from "../facades/demoFacade";
 
 const DemoScreen = (props) => {
   const [data, setData] = useState();
   const [error, setError] = useState();
 
   useEffect(() => {
-    props.demoFacade
+    demoFacade
       .dataThreads()
       .then((inputData) => {
         console.log("INPUTDATA");
@@ -24,7 +25,7 @@ const DemoScreen = (props) => {
 
   const fetchData = async () => {
     try {
-      const inputData = await props.demoFacade.dataThreads();
+      const inputData = await demoFacade.dataThreads();
       setData(inputData);
     } catch (error) {
       const e = await error;

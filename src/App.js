@@ -7,7 +7,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./screens/HomeScreen";
 import ProtectedScreen from "./screens/ProtectedScreen";
 import Facade from "./facades/apiFacade";
-import demoFacade from "./facades/demoFacade";
 import AdminScreen from "./screens/AdminScreen";
 import DemoScreen from "./screens/DemoScreen";
 //import PrivateRoute from "./components/PrivateRoute";
@@ -39,12 +38,7 @@ function App() {
         <Route exact path="/">
           <Home user={user} />
         </Route>
-        <PrivateRoute
-          path="/demo"
-          loggedIn={loggedIn}
-          component={DemoScreen}
-          demoFacade={demoFacade}
-        />
+        <PrivateRoute path="/demo" loggedIn={loggedIn} component={DemoScreen} />
         <PrivateRoute
           path="/protected"
           loggedIn={loggedIn}
