@@ -97,7 +97,7 @@ const TripsComponent = (props) => {
                         </ul>
                       </td>
                       <td>
-                        {x.guide.name}
+                        Guide name: {x.guide.name}
                         <br></br>
                         <>
                           <div style={{ padding: 1 }}>
@@ -109,7 +109,7 @@ const TripsComponent = (props) => {
                                 setModalGuide(x.guide);
                               }}
                             >
-                              See details {x.guide.name}
+                              See guide details
                             </Button>
                           </div>
                           <div style={{ padding: 1 }}>
