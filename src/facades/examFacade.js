@@ -13,9 +13,17 @@ const examFacade = () => {
     );
   };
 
+  const addUserToTrip = (inputJson) => {
+    const options = ApiFacade.makeOptions("POST", true, inputJson);
+    return fetch(URL + "/api/exam/trips", options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
+
   return {
     createUser,
     fetchTrips,
+    addUserToTrip,
   };
 };
 

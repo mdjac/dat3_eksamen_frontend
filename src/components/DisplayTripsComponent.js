@@ -32,6 +32,19 @@ const DisplayTripsComponent = () => {
         });
       });
   }, []);
+
+  const addUserToTrip = async (tripId) => {
+    let json = { tripId: tripId };
+    console.log(json);
+    try {
+      const response = await examFacade.addUserToTrip(json);
+      alert(response.message);
+    } catch (error) {
+      const e = await error;
+      alert(e.message);
+    }
+  };
+
   return (
     <>
       <h1>All Trips</h1>
@@ -70,16 +83,29 @@ const DisplayTripsComponent = () => {
                         {x.guide.name}
                         <br></br>
                         <>
-                          <Button
-                            variant="primary"
-                            size="sm"
-                            onClick={() => {
-                              setModalShow(true);
-                              setModalGuide(x.guide);
-                            }}
-                          >
-                            See details {x.guide.name}
-                          </Button>
+                          <div style={{ padding: 1 }}>
+                            <Button
+                              variant="primary"
+                              size="sm"
+                              onClick={() => {
+                                setModalShow(true);
+                                setModalGuide(x.guide);
+                              }}
+                            >
+                              See details {x.guide.name}
+                            </Button>
+                          </div>
+                          <div style={{ padding: 1 }}>
+                            <Button
+                              variant="primary"
+                              size="sm"
+                              onClick={() => {
+                                addUserToTrip(x.id);
+                              }}
+                            >
+                              Add me!
+                            </Button>
+                          </div>
                           <MyModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
