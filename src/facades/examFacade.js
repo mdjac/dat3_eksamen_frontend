@@ -20,10 +20,18 @@ const examFacade = () => {
     );
   };
 
+  const deleteTrip = (tripId) => {
+    const options = ApiFacade.makeOptions("DELETE", true);
+    return fetch(URL + "/api/exam/trips/" + tripId, options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
+
   return {
     createUser,
     fetchTrips,
     addUserToTrip,
+    deleteTrip,
   };
 };
 

@@ -6,6 +6,11 @@ import React, { useState, useEffect } from "react";
 const TripsComponent = (props) => {
   const [trips, setTrips] = useState([]);
   const [error, setError] = useState();
+  const [reloadPage, setReloadPage] = useState(false);
+
+  const forceReload = () => {
+    setReloadPage(!reloadPage);
+  };
 
   //For userstory#2 showing guide details
   const [modalShow, setModalShow] = useState(false);
@@ -31,7 +36,7 @@ const TripsComponent = (props) => {
           setError(err.message);
         });
       });
-  }, []);
+  }, [reloadPage]);
 
   const addUserToTrip = async (tripId) => {
     let json = { tripId: tripId };
@@ -46,17 +51,15 @@ const TripsComponent = (props) => {
   };
 
   const deleteTrip = async (tripId) => {
-    let json = { tripId: tripId };
-    console.log(json);
-    /*
+    console.log(tripId);
     try {
-      const response = await examFacade.addUserToTrip(json);
+      const response = await examFacade.deleteTrip(tripId);
+      forceReload();
       alert(response.message);
     } catch (error) {
       const e = await error;
       alert(e.message);
     }
-    */
   };
 
   return (
