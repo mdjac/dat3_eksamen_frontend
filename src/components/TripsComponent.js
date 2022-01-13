@@ -97,21 +97,25 @@ const TripsComponent = (props) => {
                         </ul>
                       </td>
                       <td>
-                        Guide name: {x.guide.name}
-                        <br></br>
+                        {"guide" in x && (
+                          <>
+                            Guide name: {x.guide.name}
+                            <br></br>
+                            <div style={{ padding: 1 }}>
+                              <Button
+                                variant="primary"
+                                size="sm"
+                                onClick={() => {
+                                  setModalShow(true);
+                                  setModalGuide(x.guide);
+                                }}
+                              >
+                                See guide details
+                              </Button>
+                            </div>
+                          </>
+                        )}
                         <>
-                          <div style={{ padding: 1 }}>
-                            <Button
-                              variant="primary"
-                              size="sm"
-                              onClick={() => {
-                                setModalShow(true);
-                                setModalGuide(x.guide);
-                              }}
-                            >
-                              See guide details
-                            </Button>
-                          </div>
                           <div style={{ padding: 1 }}>
                             <Button
                               variant="primary"
