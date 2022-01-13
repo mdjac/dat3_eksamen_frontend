@@ -14,7 +14,6 @@ const DisplayTripsComponent = () => {
     name: "",
     gender: "",
     birthYear: -1,
-    profile: "",
     image: "",
   });
 
@@ -126,7 +125,6 @@ const MyModal = (props) => {
               <li> ID: {props.guide.id}</li>
               <li>Name: {props.guide.name}</li>
               <li>Birth Year: {props.guide.birthYear}</li>
-              <li>Profile: {props.guide.profile}</li>
               <div
                 style={{
                   display: "flex",
