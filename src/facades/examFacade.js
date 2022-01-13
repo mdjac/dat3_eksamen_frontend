@@ -27,11 +27,19 @@ const examFacade = () => {
     );
   };
 
+  const createTrip = (inputJson) => {
+    const options = ApiFacade.makeOptions("POST", true, inputJson);
+    return fetch(URL + "/api/exam/newtrip", options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
+
   return {
     createUser,
     fetchTrips,
     addUserToTrip,
     deleteTrip,
+    createTrip,
   };
 };
 

@@ -28,9 +28,14 @@ const CreateTripComponent = () => {
     createTrip();
   };
 
-  const createTrip = () => {
-    //TODO: Create the trip
-    console.log(trip);
+  const createTrip = async () => {
+    try {
+      const response = await examFacade.createTrip(trip);
+      alert("Trip created!");
+    } catch (error) {
+      const e = await error;
+      alert(e.message);
+    }
     setTrip(initialTrip);
     setPackingItemList([]);
     setPackingItem("");
