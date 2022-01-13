@@ -34,12 +34,20 @@ const examFacade = () => {
     );
   };
 
+  const createGuide = (inputJson) => {
+    const options = ApiFacade.makeOptions("POST", true, inputJson);
+    return fetch(URL + "/api/exam/newguide", options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
+
   return {
     createUser,
     fetchTrips,
     addUserToTrip,
     deleteTrip,
     createTrip,
+    createGuide,
   };
 };
 

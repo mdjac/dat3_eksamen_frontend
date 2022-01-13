@@ -1,5 +1,6 @@
 import CreateUserComponent from "../components/CreateUserComponent";
 import CreateTripComponent from "../components/CreateTripComponent";
+import CreateGuideComponent from "../components/CreateGuideComponent";
 
 const AdminScreen = (props) => {
   return (
@@ -14,6 +15,9 @@ const AdminScreen = (props) => {
           </div>
           <div style={{ marginBottom: 20 }}>
             <CreateTripComponent />
+          </div>
+          <div style={{ marginBottom: 20 }}>
+            <CreateGuideComponent />
           </div>
         </>
       ) : (
