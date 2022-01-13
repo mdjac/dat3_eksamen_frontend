@@ -9,6 +9,14 @@ const DisplayTripsComponent = () => {
 
   //For userstory#2 showing guide details
   const [modalShow, setModalShow] = useState(false);
+  const [modalGuide, setModalGuide] = useState({
+    id: -1,
+    name: "",
+    gender: "",
+    birthYear: -1,
+    profile: "",
+    image: "",
+  });
 
   useEffect(() => {
     examFacade
@@ -68,6 +76,7 @@ const DisplayTripsComponent = () => {
                             size="sm"
                             onClick={() => {
                               setModalShow(true);
+                              setModalGuide(x.guide);
                             }}
                           >
                             See details {x.guide.name}
@@ -75,7 +84,7 @@ const DisplayTripsComponent = () => {
                           <MyModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
-                            guide={x.guide}
+                            guide={modalGuide}
                           />
                         </>
                       </td>
@@ -97,6 +106,7 @@ const DisplayTripsComponent = () => {
 };
 
 const MyModal = (props) => {
+  useEffect(() => {}, [props]);
   return (
     <>
       <Modal
