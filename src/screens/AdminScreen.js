@@ -1,4 +1,5 @@
 import CreateUserComponent from "../components/CreateUserComponent";
+import CreateTripComponent from "../components/CreateTripComponent";
 
 const AdminScreen = (props) => {
   return (
@@ -8,7 +9,12 @@ const AdminScreen = (props) => {
       {props.user && props.user.roles.includes("admin") ? (
         <>
           <h2 className="header">AdminScreen</h2>
-          <CreateUserComponent />
+          <div style={{ marginBottom: 20 }}>
+            <CreateUserComponent />
+          </div>
+          <div style={{ marginBottom: 20 }}>
+            <CreateTripComponent />
+          </div>
         </>
       ) : (
         <h2 className="header">You are not allowed here!</h2>
