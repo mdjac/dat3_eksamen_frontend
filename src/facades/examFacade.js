@@ -6,9 +6,16 @@ const examFacade = () => {
     const options = ApiFacade.makeOptions("POST", true, user);
     return fetch(URL + "/api/user", options).then(ApiFacade.handleHttpErrors);
   };
+  const fetchTrips = () => {
+    const options = ApiFacade.makeOptions("GET", true);
+    return fetch(URL + "/api/exam/trips", options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
 
   return {
     createUser,
+    fetchTrips,
   };
 };
 
