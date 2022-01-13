@@ -43,6 +43,7 @@ function App() {
           path="/protected"
           loggedIn={loggedIn}
           component={ProtectedScreen}
+          user={user}
         />
         <PrivateRoute
           path="/admin"

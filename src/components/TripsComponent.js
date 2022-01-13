@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import { Modal, Container, Row, Col, Button, Form } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 
-const DisplayTripsComponent = () => {
+const TripsComponent = (props) => {
   const [trips, setTrips] = useState([]);
   const [error, setError] = useState();
 
@@ -43,6 +43,20 @@ const DisplayTripsComponent = () => {
       const e = await error;
       alert(e.message);
     }
+  };
+
+  const deleteTrip = async (tripId) => {
+    let json = { tripId: tripId };
+    console.log(json);
+    /*
+    try {
+      const response = await examFacade.addUserToTrip(json);
+      alert(response.message);
+    } catch (error) {
+      const e = await error;
+      alert(e.message);
+    }
+    */
   };
 
   return (
@@ -106,6 +120,19 @@ const DisplayTripsComponent = () => {
                               Add me!
                             </Button>
                           </div>
+                          {props.user.roles.includes("admin") && (
+                            <div style={{ padding: 1 }}>
+                              <Button
+                                variant="danger"
+                                size="sm"
+                                onClick={() => {
+                                  deleteTrip(x.id);
+                                }}
+                              >
+                                Delete Trip
+                              </Button>
+                            </div>
+                          )}
                           <MyModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
@@ -176,4 +203,4 @@ const MyModal = (props) => {
   );
 };
 
-export default DisplayTripsComponent;
+export default TripsComponent;
