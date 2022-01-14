@@ -1,6 +1,7 @@
 import TripsComponent from "../components/TripsComponent";
 import React, { useState } from "react";
 import { useLocation, Redirect, useHistory, useParams } from "react-router-dom";
+import examFacade from "../facades/examFacade";
 
 const EditTripScreen = (props) => {
   const { id } = useParams();
