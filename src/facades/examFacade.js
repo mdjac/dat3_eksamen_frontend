@@ -41,6 +41,13 @@ const examFacade = () => {
     );
   };
 
+  const fetchTripById = (id) => {
+    const options = ApiFacade.makeOptions("GET", true);
+    return fetch(URL + "/api/exam/trips/" + id, options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
+
   return {
     createUser,
     fetchTrips,
@@ -48,6 +55,7 @@ const examFacade = () => {
     deleteTrip,
     createTrip,
     createGuide,
+    fetchTripById,
   };
 };
 
