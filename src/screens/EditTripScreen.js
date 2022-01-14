@@ -12,10 +12,17 @@ const EditTripScreen = (props) => {
     location: "",
     duration: "",
     packingItems: [],
+    //guide: { id: "", name: "", gender: "", birthYear: "", image: "" },
   };
   const { id } = useParams();
   const [trip, setTrip] = useState(initialTrip);
   const [packingItem, setPackingItem] = useState({ id: "", name: "" });
+  const [guides, setGuides] = useState();
+  /*
+  const [guides, setGuides] = useState([
+    { id: -10, name: "", gender: "", birthYear: "", image: "" },
+  ]);
+  */
 
   useEffect(() => {
     examFacade
@@ -23,6 +30,20 @@ const EditTripScreen = (props) => {
       .then((inputData) => {
         console.log("INPUTDATA");
         setTrip(inputData);
+      })
+      .catch((fullError) => {
+        fullError.then((err) => {
+          console.log("ERROR");
+          console.log(err);
+          alert(err.message);
+        });
+      });
+
+    examFacade
+      .fetchGuides()
+      .then((inputData) => {
+        console.log("INPUTDATA");
+        setGuides(inputData);
       })
       .catch((fullError) => {
         fullError.then((err) => {
@@ -164,6 +185,25 @@ const EditTripScreen = (props) => {
                   </ul>
                 )}
               </Row>
+              {guides && (
+                <>
+                  <label for="guidesId">Guide: </label>
+                  <select name="guidesId" id="guidesId">
+                    {guides.map((g) => {
+                      if (g.id == trip.guide.id) {
+                        return (
+                          <option value="g.id" selected>
+                            {g.name}
+                          </option>
+                        );
+                      } else {
+                        return <option value="g.id">{g.name}</option>;
+                      }
+                    })}
+                  </select>
+                  <br></br>
+                </>
+              )}
               <Button variant="primary" type="submit" value="Submit">
                 Submit
               </Button>
