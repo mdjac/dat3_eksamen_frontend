@@ -188,17 +188,25 @@ const EditTripScreen = (props) => {
               {guides && (
                 <>
                   <label for="guidesId">Guide: </label>
-                  <select name="guidesId" id="guidesId">
+                  <select
+                    name="guidesId"
+                    id="guidesId"
+                    onChange={(event) => {
+                      let value = event.target.value;
+                      setTrip({ ...trip, guide: value });
+                    }}
+                  >
+                    <option hidden>Select guide</option>
                     {guides.map((g) => {
-                      if (g.id == trip.guide.id) {
-                        return (
-                          <option value="g.id" selected>
-                            {g.name}
-                          </option>
-                        );
-                      } else {
-                        return <option value="g.id">{g.name}</option>;
-                      }
+                      return (
+                        <option
+                          selected={trip.guide && trip.guide.id == g.id}
+                          key={g.id}
+                          value={g.id}
+                        >
+                          {g.name}
+                        </option>
+                      );
                     })}
                   </select>
                   <br></br>
