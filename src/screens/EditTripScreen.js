@@ -23,6 +23,7 @@ const EditTripScreen = (props) => {
   const [trip, setTrip] = useState(initialTrip);
   const [packingItem, setPackingItem] = useState(initialPackingItem);
   const [guides, setGuides] = useState();
+  const [guideId, setGuideID] = useState();
   /*
   const [guides, setGuides] = useState([
     { id: -10, name: "", gender: "", birthYear: "", image: "" },
@@ -59,9 +60,9 @@ const EditTripScreen = (props) => {
       });
   }, [id]);
 
-  const updateTrip = async () => {
+  const updateTrip = async (input) => {
     try {
-      const response = await examFacade.updateTrip(trip);
+      const response = await examFacade.updateTrip(input);
       alert("Trip updated!");
     } catch (error) {
       const e = await error;
@@ -83,8 +84,9 @@ const EditTripScreen = (props) => {
       console.log("TEST WORKS");
       trip.guideId = trip.guide.id;
     }
-    console.log(packingItem);
-    updateTrip();
+    console.log("GuideID: " + guideId);
+    let inputObj = { id: id, guideId: guideId };
+    updateTrip(inputObj);
   };
 
   const handlePackingItemList = (event) => {
@@ -220,7 +222,10 @@ const EditTripScreen = (props) => {
                     id="guidesId"
                     onChange={(event) => {
                       let value = event.target.value;
-                      setTrip({ ...trip, guideId: value });
+                      console.log(value);
+                      trip.guideId = value;
+                      setGuideID(value);
+                      //setTrip({ ...trip, guideId: value });
                     }}
                   >
                     <option hidden>Select guide</option>
