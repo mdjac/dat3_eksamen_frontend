@@ -131,6 +131,7 @@ const EditTripScreen = (props) => {
                 <Form.Group as={Col}>
                   <Form.Label>Name:</Form.Label>
                   <Form.Control
+                    readOnly
                     type="text"
                     id="name"
                     value={trip.name}
@@ -141,6 +142,7 @@ const EditTripScreen = (props) => {
                 <Form.Group as={Col}>
                   <Form.Label>Date dd-mm-yy HH:mm</Form.Label>
                   <Form.Control
+                    readOnly
                     type="text"
                     id="dateTime"
                     value={trip.dateTime}
@@ -153,6 +155,7 @@ const EditTripScreen = (props) => {
                 <Form.Group as={Col}>
                   <Form.Label>Location:</Form.Label>
                   <Form.Control
+                    readOnly
                     type="text"
                     id="location"
                     value={trip.location}
@@ -163,6 +166,7 @@ const EditTripScreen = (props) => {
                 <Form.Group as={Col}>
                   <Form.Label>Duration (Days)</Form.Label>
                   <Form.Control
+                    readOnly
                     type="number"
                     id="duration"
                     value={trip.duration}
@@ -172,8 +176,9 @@ const EditTripScreen = (props) => {
                 </Form.Group>
                 <Row className="mb-3">
                   <Form.Group as={Col}>
-                    <Form.Label>Packing item:</Form.Label>
+                    <Form.Label hidden>Packing item:</Form.Label>
                     <Form.Control
+                      hidden
                       type="text"
                       id="packingItemInput"
                       value={packingItem.name}
@@ -182,6 +187,7 @@ const EditTripScreen = (props) => {
                   </Form.Group>
                   <Form.Group as={Col}>
                     <Button
+                      hidden
                       variant="success"
                       id="add"
                       onClick={handlePackingItemList}
@@ -189,6 +195,7 @@ const EditTripScreen = (props) => {
                       Add
                     </Button>
                     <Button
+                      hidden
                       variant="danger"
                       id="delete"
                       onClick={handlePackingItemList}

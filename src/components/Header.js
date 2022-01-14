@@ -32,14 +32,10 @@ const Nav = (props) => {
                 Logout
               </a>
             </li>
-            <li>
-              <NavLink exact="true" activeclassname="active" to="/demo">
-                Demo
-              </NavLink>
-            </li>
+
             <li>
               <NavLink exact="true" activeclassname="active" to="/protected">
-                Protected
+                Trips
               </NavLink>
             </li>
           </>
