@@ -14,9 +14,14 @@ const EditTripScreen = (props) => {
     packingItems: [],
     //guide: { id: "", name: "", gender: "", birthYear: "", image: "" },
   };
+
+  const initialPackingItem = {
+    id: "",
+    name: "",
+  };
   const { id } = useParams();
   const [trip, setTrip] = useState(initialTrip);
-  const [packingItem, setPackingItem] = useState({ id: "", name: "" });
+  const [packingItem, setPackingItem] = useState(initialPackingItem);
   const [guides, setGuides] = useState();
   /*
   const [guides, setGuides] = useState([
@@ -54,6 +59,17 @@ const EditTripScreen = (props) => {
       });
   }, [id]);
 
+  const updateTrip = async () => {
+    try {
+      const response = await examFacade.updateTrip(trip);
+      alert("Trip updated!");
+    } catch (error) {
+      const e = await error;
+      alert(e.message);
+    }
+    setTrip(initialTrip);
+    setPackingItem(initialPackingItem);
+  };
   const handleChange = (event) => {
     const target = event.target;
     const id = target.id;
@@ -62,10 +78,12 @@ const EditTripScreen = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("submitted");
-    console.log("TEST");
     console.log(trip);
-    console.log(trip.packingItems);
+    if ("guide" in trip) {
+      trip.guideId = trip.guide.id;
+    }
+    console.log(packingItem);
+    updateTrip();
   };
 
   const handlePackingItemList = (event) => {
@@ -193,7 +211,7 @@ const EditTripScreen = (props) => {
                     id="guidesId"
                     onChange={(event) => {
                       let value = event.target.value;
-                      setTrip({ ...trip, guide: value });
+                      setTrip({ ...trip, guideId: value });
                     }}
                   >
                     <option hidden>Select guide</option>

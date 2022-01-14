@@ -55,6 +55,13 @@ const examFacade = () => {
     );
   };
 
+  const updateTrip = (trip) => {
+    const options = ApiFacade.makeOptions("PUT", true, trip);
+    return fetch(URL + "/api/exam/trips", options).then(
+      ApiFacade.handleHttpErrors
+    );
+  };
+
   return {
     createUser,
     fetchTrips,
@@ -64,6 +71,7 @@ const examFacade = () => {
     createGuide,
     fetchTripById,
     fetchGuides,
+    updateTrip,
   };
 };
 
