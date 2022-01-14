@@ -16,7 +16,7 @@ const EditTripScreen = (props) => {
   };
 
   const initialPackingItem = {
-    id: "",
+    //id: "",
     name: "",
   };
   const { id } = useParams();
@@ -80,6 +80,7 @@ const EditTripScreen = (props) => {
     event.preventDefault();
     console.log(trip);
     if ("guide" in trip) {
+      console.log("TEST WORKS");
       trip.guideId = trip.guide.id;
     }
     console.log(packingItem);
@@ -91,6 +92,7 @@ const EditTripScreen = (props) => {
     const id = target.id;
     const value = target.value;
     if (id == "packingItemInput") {
+      //setPackingItem({ ...packingItem, name: value });
       setPackingItem({ ...packingItem, name: value });
     } else if (id == "add") {
       const newList = trip.packingItems.concat(packingItem);
