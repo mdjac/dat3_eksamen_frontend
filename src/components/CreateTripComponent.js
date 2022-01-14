@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
+import uuid from "react-uuid";
 import examFacade from "../facades/examFacade";
 
 const CreateTripComponent = () => {
@@ -142,7 +143,7 @@ const CreateTripComponent = () => {
         {packingItemList.length > 0 && (
           <ul>
             {packingItemList.map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={uuid()}>{item}</li>;
             })}
           </ul>
         )}

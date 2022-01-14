@@ -2,6 +2,9 @@ import examFacade from "../facades/examFacade";
 import Table from "react-bootstrap/Table";
 import { Modal, Container, Row, Col, Button, Form } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
+import uuid from "react-uuid";
+import { URL } from "../constants.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const TripsComponent = (props) => {
   const [trips, setTrips] = useState([]);
@@ -92,7 +95,7 @@ const TripsComponent = (props) => {
                       <td>
                         <ul>
                           {x.packingItems.map((item) => {
-                            return <li>{item.name}</li>;
+                            return <li key={uuid()}>{item.name}</li>;
                           })}
                         </ul>
                       </td>
@@ -128,17 +131,27 @@ const TripsComponent = (props) => {
                             </Button>
                           </div>
                           {props.user.roles.includes("admin") && (
-                            <div style={{ padding: 1 }}>
-                              <Button
-                                variant="danger"
-                                size="sm"
-                                onClick={() => {
-                                  deleteTrip(x.id);
-                                }}
-                              >
-                                Delete Trip
-                              </Button>
-                            </div>
+                            <>
+                              <div style={{ padding: 1 }}>
+                                <Button
+                                  variant="danger"
+                                  size="sm"
+                                  onClick={() => {
+                                    deleteTrip(x.id);
+                                  }}
+                                >
+                                  Delete Trip
+                                </Button>
+                              </div>
+                              <div style={{ padding: 1 }}>
+                                <Link
+                                  to={`/edittrip/${x.id}`}
+                                  className="btn btn-warning"
+                                >
+                                  Edit trip
+                                </Link>
+                              </div>
+                            </>
                           )}
                           <MyModal
                             show={modalShow}
